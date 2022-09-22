@@ -1,5 +1,5 @@
 var weatherCard = document.getElementsByClassName('card-text');
-var cityInputEl = document.getElementById('city');
+var cityInputEl = document.getElementById('City');
 var searchBtn = document.getElementById('search')
 var APIKey = "6da0b49999367300f70db98e448e05ee";
 
@@ -7,7 +7,7 @@ var APIKey = "6da0b49999367300f70db98e448e05ee";
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
-    var weather = cityInputEl.value();
+    var weather = cityInputEl.value;
 
     if(weather) {
         WeatherData(weather);
