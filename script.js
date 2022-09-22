@@ -1,7 +1,7 @@
 var weatherCard = document.getElementsByClassName('card-text');
-var cityInputEl = document.querySelector('#city');
+var cityInputEl = document.getElementById('#city');
 var APIKey = "6da0b49999367300f70db98e448e05ee";
-var city;
+
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
@@ -20,7 +20,7 @@ var formSubmitHandler = function (event) {
 
 var WeatherData = function(City) {
 
-    var apiWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + City + "&appid=" + APIKey;
+    var apiWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInputEl.value + "&appid=6da0b49999367300f70db98e448e05ee";
 
     fetch(apiWeather)
 
@@ -31,8 +31,12 @@ var WeatherData = function(City) {
             throw new Error ("NETWORK RESPONSE ERROR");
         }
     })
+
+    .then(data => {
+        console.log(data);
+    })
+
+    .catch((error) => console.error("FETCH ERROR:", error));
 };
 
-window.onload = function() {
-    cityInputEl.addEventListener('click', formSubmitHandler);
-};
+cityInputEl.addEventListener('click', formSubmitHandler);
